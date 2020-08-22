@@ -1,0 +1,895 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/Temple.gd" type="Script" id=1]
+[ext_resource path="res://tileset/TempleTile.png" type="Texture" id=2]
+[ext_resource path="res://entities/map_entity/fire_spitter/FireSpitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/map_entity/fire_spitter/LeftFireSpitter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/map_entity/crumbling_tile/CrumblingTile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/map_entity/disco_tile/DiscoTile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/map_entity/curse_skull/CurseSkull.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/map_entity/pillar/Pillar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/map_entity/golden_idol/GoldenIdol.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ViualGrid.gd" type="Script" id=10]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 2000 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 80, 10 )
+
+[node name="Temple" type="Node2D"]
+z_index = 2
+script = ExtResource( 1 )
+height = -77
+base_tile_texture = ExtResource( 2 )
+
+[node name="PlayerSpawn" type="Position2D" parent="."]
+position = Vector2( 60, 12 )
+
+[node name="Bounds" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="LeftBounds" type="Area2D" parent="Bounds"]
+editor/display_folded = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBounds"]
+position = Vector2( -12, 0 )
+shape = SubResource( 1 )
+
+[node name="RightBounds" type="Area2D" parent="Bounds"]
+editor/display_folded = true
+position = Vector2( 168, 0 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBounds"]
+position = Vector2( -36, 0 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="Area2D" parent="Bounds"]
+editor/display_folded = true
+position = Vector2( 168, 0 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom"]
+position = Vector2( -108, 36 )
+shape = SubResource( 2 )
+
+[node name="Map" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Tutorial" type="Node2D" parent="Map"]
+editor/display_folded = true
+
+[node name="Spitters" type="Node2D" parent="Map/Tutorial"]
+
+[node name="RightFireSpitter2" parent="Map/Tutorial/Spitters" instance=ExtResource( 3 )]
+position = Vector2( 12, -36 )
+
+[node name="RightFireSpitter3" parent="Map/Tutorial/Spitters" instance=ExtResource( 3 )]
+position = Vector2( 12, -132 )
+
+[node name="LeftFireSpitter" parent="Map/Tutorial/Spitters" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -84 )
+
+[node name="Crumblings" type="Node2D" parent="Map/Tutorial"]
+editor/display_folded = true
+
+[node name="CrumblingTile2" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 12, -180 )
+collision_mask = 1
+
+[node name="CrumblingTile3" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 36, -180 )
+collision_mask = 1
+
+[node name="CrumblingTile4" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 60, -180 )
+collision_mask = 1
+
+[node name="CrumblingTile5" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 84, -180 )
+collision_mask = 1
+
+[node name="CrumblingTile6" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 108, -180 )
+collision_mask = 1
+
+[node name="CrumblingTile7" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 108, -204 )
+collision_mask = 1
+
+[node name="CrumblingTile8" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 84, -204 )
+collision_mask = 1
+
+[node name="CrumblingTile9" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 60, -204 )
+collision_mask = 1
+
+[node name="CrumblingTile10" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 36, -204 )
+collision_mask = 1
+
+[node name="CrumblingTile11" parent="Map/Tutorial/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 12, -204 )
+collision_mask = 1
+
+[node name="Disco" type="Node2D" parent="Map/Tutorial"]
+editor/display_folded = true
+
+[node name="DiscoTile2" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -252 )
+collision_mask = 1
+
+[node name="DiscoTile3" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -252 )
+collision_mask = 1
+
+[node name="DiscoTile4" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -252 )
+collision_mask = 1
+
+[node name="DiscoTile5" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -252 )
+collision_mask = 1
+
+[node name="DiscoTile6" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -252 )
+collision_mask = 1
+
+[node name="DiscoTile7" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -276 )
+collision_mask = 1
+
+[node name="DiscoTile8" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -276 )
+collision_mask = 1
+
+[node name="DiscoTile9" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -276 )
+collision_mask = 1
+
+[node name="DiscoTile10" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -276 )
+collision_mask = 1
+
+[node name="DiscoTile11" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -276 )
+collision_mask = 1
+
+[node name="DiscoTile12" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -324 )
+collision_mask = 1
+
+[node name="DiscoTile18" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -348 )
+collision_mask = 1
+
+[node name="DiscoTile13" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -324 )
+collision_mask = 1
+
+[node name="DiscoTile20" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -348 )
+collision_mask = 1
+
+[node name="DiscoTile14" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -324 )
+collision_mask = 1
+
+[node name="DiscoTile19" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -348 )
+collision_mask = 1
+
+[node name="DiscoTile15" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -324 )
+collision_mask = 1
+
+[node name="DiscoTile17" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -348 )
+collision_mask = 1
+
+[node name="DiscoTile16" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -324 )
+collision_mask = 1
+
+[node name="DiscoTile21" parent="Map/Tutorial/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -348 )
+collision_mask = 1
+
+[node name="FirstCurse" type="Node2D" parent="Map"]
+editor/display_folded = true
+
+[node name="CurseSkull" parent="Map/FirstCurse" instance=ExtResource( 7 )]
+position = Vector2( 84, -468 )
+
+[node name="Pillars" type="Node2D" parent="Map/FirstCurse"]
+
+[node name="Pillar" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 60, -396 )
+
+[node name="Pillar11" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -396 )
+
+[node name="Pillar12" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -396 )
+
+[node name="Pillar2" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -396 )
+
+[node name="Pillar3" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -396 )
+
+[node name="Pillar4" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -444 )
+
+[node name="Pillar5" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 60, -444 )
+
+[node name="Pillar6" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -444 )
+
+[node name="Pillar7" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -468 )
+
+[node name="Pillar8" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -492 )
+
+[node name="Pillar9" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -492 )
+
+[node name="Pillar10" parent="Map/FirstCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -492 )
+
+[node name="Crumblings" type="Node2D" parent="Map/FirstCurse"]
+
+[node name="CrumblingTile" parent="Map/FirstCurse/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 60, -420 )
+
+[node name="CrumblingTile3" parent="Map/FirstCurse/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 12, -468 )
+
+[node name="CrumblingTile2" parent="Map/FirstCurse/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 84, -420 )
+
+[node name="CrumblingTile4" parent="Map/FirstCurse/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 108, -420 )
+
+[node name="CrumblingTile5" parent="Map/FirstCurse/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 108, -468 )
+
+[node name="CrumblingTile7" parent="Map/FirstCurse/Crumblings" instance=ExtResource( 5 )]
+position = Vector2( 60, -492 )
+
+[node name="Disco" type="Node2D" parent="Map/FirstCurse"]
+
+[node name="DiscoTile" parent="Map/FirstCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -492 )
+
+[node name="DiscoTile2" parent="Map/FirstCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -444 )
+
+[node name="DiscoTile3" parent="Map/FirstCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -468 )
+
+[node name="DualSpitter" type="Node2D" parent="Map"]
+editor/display_folded = true
+
+[node name="FireSpitter" parent="Map/DualSpitter" instance=ExtResource( 3 )]
+position = Vector2( 12, -540 )
+
+[node name="LeftFireSpitter" parent="Map/DualSpitter" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -564 )
+
+[node name="CrumbleSpitter" type="Node2D" parent="Map"]
+editor/display_folded = true
+
+[node name="FireSpitter2" parent="Map/CrumbleSpitter" instance=ExtResource( 3 )]
+position = Vector2( 12, -636 )
+
+[node name="FireSpitter3" parent="Map/CrumbleSpitter" instance=ExtResource( 3 )]
+position = Vector2( 12, -732 )
+
+[node name="LeftFireSpitter2" parent="Map/CrumbleSpitter" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -684 )
+
+[node name="Crumblings" type="Node2D" parent="Map/CrumbleSpitter"]
+
+[node name="CrumblingLine" type="Node2D" parent="Map/CrumbleSpitter/Crumblings"]
+editor/display_folded = true
+position = Vector2( 108, -660 )
+
+[node name="CrumblingTile" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine" instance=ExtResource( 5 )]
+position = Vector2( -96, 0 )
+
+[node name="CrumblingTile2" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine" instance=ExtResource( 5 )]
+position = Vector2( -72, 0 )
+
+[node name="CrumblingTile3" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine" instance=ExtResource( 5 )]
+position = Vector2( -48, 0 )
+
+[node name="CrumblingTile4" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine" instance=ExtResource( 5 )]
+position = Vector2( -24, 0 )
+
+[node name="CrumblingTile5" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine" instance=ExtResource( 5 )]
+
+[node name="CrumblingLine2" type="Node2D" parent="Map/CrumbleSpitter/Crumblings"]
+editor/display_folded = true
+position = Vector2( 108, -708 )
+
+[node name="CrumblingTile" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine2" instance=ExtResource( 5 )]
+position = Vector2( -96, 0 )
+
+[node name="CrumblingTile2" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine2" instance=ExtResource( 5 )]
+position = Vector2( -72, 0 )
+
+[node name="CrumblingTile3" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine2" instance=ExtResource( 5 )]
+position = Vector2( -48, 0 )
+
+[node name="CrumblingTile4" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine2" instance=ExtResource( 5 )]
+position = Vector2( -24, 0 )
+
+[node name="CrumblingTile5" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine2" instance=ExtResource( 5 )]
+
+[node name="CrumblingLine3" type="Node2D" parent="Map/CrumbleSpitter/Crumblings"]
+editor/display_folded = true
+position = Vector2( 108, -612 )
+
+[node name="CrumblingTile" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine3" instance=ExtResource( 5 )]
+position = Vector2( -96, 0 )
+
+[node name="CrumblingTile2" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine3" instance=ExtResource( 5 )]
+position = Vector2( -72, 0 )
+
+[node name="CrumblingTile3" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine3" instance=ExtResource( 5 )]
+position = Vector2( -48, 0 )
+
+[node name="CrumblingTile4" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine3" instance=ExtResource( 5 )]
+position = Vector2( -24, 0 )
+
+[node name="CrumblingTile5" parent="Map/CrumbleSpitter/Crumblings/CrumblingLine3" instance=ExtResource( 5 )]
+
+[node name="DiscoLine" type="Node2D" parent="Map"]
+editor/display_folded = true
+position = Vector2( 0, -768.029 )
+
+[node name="DiscoTile" parent="Map/DiscoLine" instance=ExtResource( 6 )]
+position = Vector2( 12, 11.9712 )
+
+[node name="DiscoTile2" parent="Map/DiscoLine" instance=ExtResource( 6 )]
+position = Vector2( 36, 11.9712 )
+
+[node name="DiscoTile3" parent="Map/DiscoLine" instance=ExtResource( 6 )]
+position = Vector2( 60, 11.9712 )
+
+[node name="DiscoTile4" parent="Map/DiscoLine" instance=ExtResource( 6 )]
+position = Vector2( 84, 11.9712 )
+
+[node name="DiscoTile5" parent="Map/DiscoLine" instance=ExtResource( 6 )]
+position = Vector2( 108, 11.9712 )
+
+[node name="SecondCurse" type="Node2D" parent="Map"]
+editor/display_folded = true
+position = Vector2( 0, -24 )
+
+[node name="CurseSkull" parent="Map/SecondCurse" instance=ExtResource( 7 )]
+position = Vector2( 36, -924 )
+
+[node name="Pillars" type="Node2D" parent="Map/SecondCurse"]
+editor/display_folded = true
+
+[node name="Pillar" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -780 )
+
+[node name="Pillar2" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -804 )
+
+[node name="Pillar3" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -828 )
+
+[node name="Pillar4" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -852 )
+
+[node name="Pillar5" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -876 )
+
+[node name="Pillar6" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -900 )
+
+[node name="Pillar7" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -924 )
+
+[node name="Pillar8" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -948 )
+
+[node name="Pillar9" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 60, -948 )
+
+[node name="Pillar10" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -900 )
+
+[node name="Pillar11" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -900 )
+
+[node name="Pillar12" parent="Map/SecondCurse/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -948 )
+
+[node name="Spitters" type="Node2D" parent="Map/SecondCurse"]
+editor/display_folded = true
+
+[node name="FireSpitter" parent="Map/SecondCurse/Spitters" instance=ExtResource( 3 )]
+position = Vector2( 12, -828 )
+
+[node name="FireSpitter2" parent="Map/SecondCurse/Spitters" instance=ExtResource( 3 )]
+position = Vector2( 12, -876 )
+
+[node name="Disco" type="Node2D" parent="Map/SecondCurse"]
+editor/display_folded = true
+
+[node name="DiscoTile" parent="Map/SecondCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -852 )
+
+[node name="DiscoTile2" parent="Map/SecondCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -900 )
+
+[node name="DiscoTile3" parent="Map/SecondCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -924 )
+
+[node name="DiscoTile4" parent="Map/SecondCurse/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -852 )
+
+[node name="Crumble" type="Node2D" parent="Map/SecondCurse"]
+editor/display_folded = true
+
+[node name="CrumblingTile" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 12, -804 )
+
+[node name="CrumblingTile2" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 36, -804 )
+
+[node name="CrumblingTile3" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 60, -804 )
+
+[node name="CrumblingTile4" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 60, -852 )
+
+[node name="CrumblingTile5" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 12, -924 )
+
+[node name="CrumblingTile6" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 12, -948 )
+
+[node name="CrumblingTile7" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 108, -900 )
+
+[node name="CrumblingTile10" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 108, -876 )
+
+[node name="CrumblingTile8" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 108, -828 )
+
+[node name="CrumblingTile9" parent="Map/SecondCurse/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 108, -804 )
+
+[node name="4Spitter" type="Node2D" parent="Map"]
+editor/display_folded = true
+position = Vector2( 0, -504 )
+
+[node name="FireSpitter" parent="Map/4Spitter" instance=ExtResource( 3 )]
+position = Vector2( 12, -540 )
+
+[node name="FireSpitter2" parent="Map/4Spitter" instance=ExtResource( 3 )]
+position = Vector2( 12, -588 )
+
+[node name="LeftFireSpitter" parent="Map/4Spitter" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -564 )
+
+[node name="LeftFireSpitter2" parent="Map/4Spitter" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -516 )
+
+[node name="DiscoMadness" type="Node2D" parent="Map"]
+editor/display_folded = true
+position = Vector2( 0, -24 )
+
+[node name="Cross" type="Node2D" parent="Map/DiscoMadness"]
+editor/display_folded = true
+
+[node name="Disco" type="Node2D" parent="Map/DiscoMadness/Cross"]
+
+[node name="DiscoTile" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1140 )
+
+[node name="DiscoTile2" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1164 )
+
+[node name="DiscoTile3" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1164 )
+
+[node name="DiscoTile4" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1188 )
+
+[node name="DiscoTile5" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1116 )
+
+[node name="DiscoTile6" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1116 )
+
+[node name="DiscoTile7" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1116 )
+
+[node name="DiscoTile8" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1140 )
+
+[node name="DiscoTile9" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1140 )
+
+[node name="DiscoTile10" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1164 )
+
+[node name="DiscoTile11" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1164 )
+
+[node name="DiscoTile12" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1188 )
+
+[node name="DiscoTile13" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1188 )
+
+[node name="DiscoTile14" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1212 )
+
+[node name="DiscoTile15" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1212 )
+
+[node name="DiscoTile16" parent="Map/DiscoMadness/Cross/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1212 )
+
+[node name="Crumble" type="Node2D" parent="Map/DiscoMadness/Cross"]
+editor/display_folded = true
+
+[node name="CrumblingTile" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 12, -1116 )
+
+[node name="CrumblingTile2" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 36, -1140 )
+
+[node name="CrumblingTile3" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 60, -1164 )
+
+[node name="CrumblingTile4" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 84, -1140 )
+
+[node name="CrumblingTile5" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 108, -1116 )
+
+[node name="CrumblingTile6" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 84, -1188 )
+
+[node name="CrumblingTile7" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 108, -1212 )
+
+[node name="CrumblingTile8" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 12, -1212 )
+
+[node name="CrumblingTile9" parent="Map/DiscoMadness/Cross/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 36, -1188 )
+
+[node name="Square" type="Node2D" parent="Map/DiscoMadness"]
+editor/display_folded = true
+position = Vector2( 0, -144 )
+
+[node name="Disco" type="Node2D" parent="Map/DiscoMadness/Square"]
+
+[node name="DiscoTile" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1140 )
+
+[node name="DiscoTile2" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1164 )
+
+[node name="DiscoTile3" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1212 )
+
+[node name="DiscoTile17" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1212 )
+
+[node name="DiscoTile4" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1188 )
+
+[node name="DiscoTile5" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1116 )
+
+[node name="DiscoTile6" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1116 )
+
+[node name="DiscoTile7" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1116 )
+
+[node name="DiscoTile8" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1116 )
+
+[node name="DiscoTile9" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1140 )
+
+[node name="DiscoTile10" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1164 )
+
+[node name="DiscoTile11" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1164 )
+
+[node name="DiscoTile18" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1164 )
+
+[node name="DiscoTile19" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1188 )
+
+[node name="DiscoTile20" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1164 )
+
+[node name="DiscoTile21" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1140 )
+
+[node name="DiscoTile12" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1188 )
+
+[node name="DiscoTile13" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1116 )
+
+[node name="DiscoTile14" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1212 )
+
+[node name="DiscoTile15" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1212 )
+
+[node name="DiscoTile16" parent="Map/DiscoMadness/Square/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1212 )
+
+[node name="Crumble" type="Node2D" parent="Map/DiscoMadness/Square"]
+
+[node name="CrumblingTile2" parent="Map/DiscoMadness/Square/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 36, -1140 )
+
+[node name="CrumblingTile4" parent="Map/DiscoMadness/Square/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 84, -1140 )
+
+[node name="CrumblingTile6" parent="Map/DiscoMadness/Square/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 84, -1188 )
+
+[node name="CrumblingTile9" parent="Map/DiscoMadness/Square/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 36, -1188 )
+
+[node name="Eight" type="Node2D" parent="Map/DiscoMadness"]
+editor/display_folded = true
+position = Vector2( 0, -288 )
+
+[node name="Disco" type="Node2D" parent="Map/DiscoMadness/Eight"]
+editor/display_folded = true
+
+[node name="DiscoTile" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1140 )
+
+[node name="DiscoTile2" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1164 )
+
+[node name="DiscoTile4" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1188 )
+
+[node name="DiscoTile5" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1116 )
+
+[node name="DiscoTile6" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1116 )
+
+[node name="DiscoTile7" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1116 )
+
+[node name="DiscoTile8" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 12, -1116 )
+
+[node name="DiscoTile9" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1140 )
+
+[node name="DiscoTile10" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1164 )
+
+[node name="DiscoTile11" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 60, -1164 )
+
+[node name="DiscoTile18" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1188 )
+
+[node name="DiscoTile19" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 36, -1140 )
+
+[node name="DiscoTile20" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1140 )
+
+[node name="DiscoTile21" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 84, -1188 )
+
+[node name="DiscoTile13" parent="Map/DiscoMadness/Eight/Disco" instance=ExtResource( 6 )]
+position = Vector2( 108, -1116 )
+
+[node name="Disco2" type="Node2D" parent="Map/DiscoMadness/Eight"]
+editor/display_folded = true
+position = Vector2( 0, -120 )
+
+[node name="DiscoTile2" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 12, -1116 )
+
+[node name="DiscoTile3" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 108, -1164 )
+
+[node name="DiscoTile17" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 12, -1164 )
+
+[node name="DiscoTile4" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 12, -1140 )
+
+[node name="DiscoTile9" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 108, -1092 )
+
+[node name="DiscoTile10" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 108, -1116 )
+
+[node name="DiscoTile11" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 60, -1116 )
+
+[node name="DiscoTile18" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 36, -1140 )
+
+[node name="DiscoTile19" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 36, -1092 )
+
+[node name="DiscoTile20" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 84, -1092 )
+
+[node name="DiscoTile21" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 84, -1140 )
+
+[node name="DiscoTile12" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 108, -1140 )
+
+[node name="DiscoTile14" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 60, -1164 )
+
+[node name="DiscoTile15" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 84, -1164 )
+
+[node name="DiscoTile16" parent="Map/DiscoMadness/Eight/Disco2" instance=ExtResource( 6 )]
+position = Vector2( 36, -1164 )
+
+[node name="Crumble" type="Node2D" parent="Map/DiscoMadness/Eight"]
+editor/display_folded = true
+
+[node name="CrumblingTile2" parent="Map/DiscoMadness/Eight/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 36, -1164 )
+
+[node name="CrumblingTile4" parent="Map/DiscoMadness/Eight/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 60, -1140 )
+
+[node name="CrumblingTile6" parent="Map/DiscoMadness/Eight/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 84, -1164 )
+
+[node name="CrumblingTile9" parent="Map/DiscoMadness/Eight/Crumble" instance=ExtResource( 5 )]
+position = Vector2( 60, -1188 )
+
+[node name="Crumble2" type="Node2D" parent="Map/DiscoMadness/Eight"]
+editor/display_folded = true
+position = Vector2( 0, -120 )
+
+[node name="CrumblingTile2" parent="Map/DiscoMadness/Eight/Crumble2" instance=ExtResource( 5 )]
+position = Vector2( 36, -1116 )
+
+[node name="CrumblingTile4" parent="Map/DiscoMadness/Eight/Crumble2" instance=ExtResource( 5 )]
+position = Vector2( 60, -1092 )
+
+[node name="CrumblingTile6" parent="Map/DiscoMadness/Eight/Crumble2" instance=ExtResource( 5 )]
+position = Vector2( 84, -1116 )
+
+[node name="CrumblingTile9" parent="Map/DiscoMadness/Eight/Crumble2" instance=ExtResource( 5 )]
+position = Vector2( 60, -1140 )
+
+[node name="FireSpitter" parent="Map/DiscoMadness/Eight" instance=ExtResource( 3 )]
+position = Vector2( 12, -1212 )
+
+[node name="FireSpitter2" parent="Map/DiscoMadness/Eight" instance=ExtResource( 3 )]
+position = Vector2( 12, -1332 )
+
+[node name="LeftFireSpitter" parent="Map/DiscoMadness/Eight" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -1188 )
+
+[node name="LeftFireSpitter2" parent="Map/DiscoMadness/Eight" groups=[
+"map_entities",
+] instance=ExtResource( 4 )]
+position = Vector2( 108, -1308 )
+
+[node name="End" type="Node2D" parent="Map"]
+position = Vector2( 0, -24 )
+
+[node name="GoldenIdol" parent="Map/End" instance=ExtResource( 9 )]
+position = Vector2( 60, -1740 )
+
+[node name="Pillars" type="Node2D" parent="Map/End"]
+
+[node name="Pillar" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1764 )
+
+[node name="Pillar2" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1788 )
+
+[node name="Pillar3" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -1788 )
+
+[node name="Pillar4" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 60, -1788 )
+
+[node name="Pillar5" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -1788 )
+
+[node name="Pillar6" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -1788 )
+
+[node name="Pillar7" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -1764 )
+
+[node name="Pillar8" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -1740 )
+
+[node name="Pillar9" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1740 )
+
+[node name="Pillar10" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1740 )
+
+[node name="Pillar11" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1740 )
+
+[node name="Pillar12" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1716 )
+
+[node name="Pillar13" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 12, -1692 )
+
+[node name="Pillar14" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -1692 )
+
+[node name="Pillar19" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 36, -1668 )
+
+[node name="Pillar15" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -1692 )
+
+[node name="Pillar18" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 84, -1668 )
+
+[node name="Pillar16" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -1692 )
+
+[node name="Pillar17" parent="Map/End/Pillars" instance=ExtResource( 8 )]
+position = Vector2( 108, -1716 )
+
+[node name="ViualGrid" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+position = Vector2( 60, 12 )
+z_index = 2
+[connection signal="died" from="Player" to="." method="_on_Player_died"]

@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/end_screen/EndScreen.gd" type="Script" id=1]
+[ext_resource path="res://font/pixel-krud-brk/big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://font/pixel-krud-brk/normal.tres" type="DynamicFont" id=3]
+[ext_resource path="res://entities/map_entity/golden_idol/GoldenSkull.png" type="Texture" id=4]
+[ext_resource path="res://entities/map_entity/disco_tile/DiscoTileV3.png" type="Texture" id=5]
+[ext_resource path="res://entities/map_entity/fire_ball/fireV2.png" type="Texture" id=6]
+[ext_resource path="res://entities/map_entity/crumbling_tile/CrumbleTileV2.png" type="Texture" id=7]
+[ext_resource path="res://entities/map_entity/curse_skull/CurseSkull.png" type="Texture" id=8]
+
+[node name="Tuto" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 244.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackGround" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.109804, 0.101961, 0.101961, 1 )
+
+[node name="Title" type="Label" parent="UI"]
+margin_left = 41.4617
+margin_top = -6.6688
+margin_right = 209.462
+margin_bottom = 41.3312
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.760784, 0.537255, 0.14902, 1 )
+text = "How to Play"
+align = 1
+valign = 1
+
+[node name="Golden" type="Label" parent="UI"]
+margin_left = 37.6577
+margin_top = 30.3853
+margin_right = 205.658
+margin_bottom = 78.3853
+custom_fonts/font = ExtResource( 3 )
+text = "Reach      first to win"
+align = 1
+valign = 1
+
+[node name="GoldenSkull" type="Sprite" parent="UI"]
+position = Vector2( 103.371, 55.7054 )
+texture = ExtResource( 4 )
+hframes = 2
+
+[node name="Bad" type="Label" parent="UI"]
+margin_left = 76.7588
+margin_top = 72.7499
+margin_right = 244.759
+margin_bottom = 120.75
+custom_fonts/font = ExtResource( 3 )
+text = "will kill you"
+align = 1
+valign = 1
+
+[node name="BloodyDiscoTileV3" type="Sprite" parent="UI"]
+position = Vector2( 32.6203, 98.1065 )
+texture = ExtResource( 5 )
+hframes = 3
+frame = 2
+
+[node name="Fireball" type="Sprite" parent="UI"]
+position = Vector2( 65.5836, 96.7845 )
+texture = ExtResource( 6 )
+
+[node name="CrumbleTileV2" type="Sprite" parent="UI"]
+position = Vector2( 96.9537, 99.7669 )
+texture = ExtResource( 7 )
+hframes = 4
+frame = 3
+
+[node name="Curse" type="Label" parent="UI"]
+margin_left = 50.4871
+margin_top = 118.332
+margin_right = 218.487
+margin_bottom = 166.332
+custom_fonts/font = ExtResource( 3 )
+text = "curses the other player"
+align = 1
+valign = 1
+
+[node name="CurseSkull" type="Sprite" parent="UI"]
+position = Vector2( 35.1164, 142.239 )
+texture = ExtResource( 8 )
+hframes = 2
+
+[node name="Restart Text" type="Label" parent="UI"]
+margin_left = 42.9339
+margin_top = 169.982
+margin_right = 210.934
+margin_bottom = 217.982
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.662745, 0.533333, 0.027451, 1 )
+text = "Press Up and Z
+to play"
+align = 1
+valign = 1
